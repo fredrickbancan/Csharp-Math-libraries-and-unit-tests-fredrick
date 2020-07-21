@@ -23,6 +23,7 @@ namespace MathClasses
             this.x = this.y = this.z = this.w = j; 
         }
 
+        //vector vector operators
         public static Vector4F operator + (Vector4F a, Vector4F b)
         {
             return new Vector4F(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
@@ -31,6 +32,49 @@ namespace MathClasses
         public static Vector4F operator - (Vector4F a, Vector4F b)
         {
             return new Vector4F(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+        }
+
+        public static Vector4F operator * (Vector4F a, Vector4F b)
+        {
+            return new Vector4F(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
+        }
+
+        //Float operators, post
+        public static Vector4F operator + (Vector4F a, float b)
+        {
+            return new Vector4F(a.x + b, a.y + b, a.z + b, a.w + b);
+        }
+
+        public static Vector4F operator - (Vector4F a, float b)
+        {
+            return new Vector4F(a.x - b, a.y - b, a.z - b, a.w - b);
+        }
+
+        public static Vector4F operator * (Vector4F a, float b)
+        {
+            return new Vector4F(a.x * b, a.y * b, a.z * b, a.w * b);
+        }
+
+        //Float operators, pre
+        public static Vector4F operator + (float b, Vector4F a)
+        {
+            return new Vector4F(a.x + b, a.y + b, a.z + b, a.w + b);
+        }
+
+        public static Vector4F operator - (float b, Vector4F a)
+        {
+            return new Vector4F(a.x - b, a.y - b, a.z - b, a.w - b);
+        }
+
+        public static Vector4F operator * (float b, Vector4F a)
+        {
+            return new Vector4F(a.x * b, a.y * b, a.z * b, a.w * b);
+        }
+
+        //funcs
+        public float Dot(Vector4F vec)
+        {
+            return this.x * vec.x + this.y * vec.y + this.z * vec.z + this.w * vec.w;
         }
     }
 }
