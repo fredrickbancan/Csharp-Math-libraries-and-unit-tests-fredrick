@@ -26,18 +26,12 @@ namespace MathClasses
         }
 
         //matrix matrix operators
-        public static Matrix3F operator * (Matrix3F matA, Matrix3F matB) //same as examples for math, 3 rows of A for each column of B 
+        public static Matrix3F operator * (Matrix3F matA, Matrix3F matB) //3 columns of A for each row of B 
         {
             return new Matrix3F(
-                    /*m1*/matA.m1 * matB.m1 + matA.m4 * matB.m2 + matA.m7 * matB.m3,
-                    /*m2*/matA.m2 * matB.m1 + matA.m5 * matB.m2 + matA.m8 * matB.m3,
-                    /*m3*/matA.m3 * matB.m1 + matA.m6 * matB.m2 + matA.m9 * matB.m3,
-                    /*m4*/matA.m1 * matB.m4 + matA.m4 * matB.m5 + matA.m7 * matB.m6,
-                    /*m5*/matA.m2 * matB.m4 + matA.m5 * matB.m5 + matA.m8 * matB.m6,
-                    /*m6*/matA.m3 * matB.m4 + matA.m6 * matB.m5 + matA.m9 * matB.m6,
-                    /*m7*/matA.m1 * matB.m7 + matA.m4 * matB.m8 + matA.m7 * matB.m9,
-                    /*m8*/matA.m2 * matB.m7 + matA.m5 * matB.m8 + matA.m8 * matB.m9,
-                    /*m9*/matA.m3 * matB.m7 + matA.m6 * matB.m8 + matA.m9 * matB.m9);
+/*m1*/matA.m1 * matB.m1 + matA.m4 * matB.m2 + matA.m7 * matB.m3, /*m2*/matA.m2 * matB.m1 + matA.m5 * matB.m2 + matA.m8 * matB.m3, /*m3*/matA.m3 * matB.m1 + matA.m6 * matB.m2 + matA.m9 * matB.m3,
+/*m4*/matA.m1 * matB.m4 + matA.m4 * matB.m5 + matA.m7 * matB.m6, /*m5*/matA.m2 * matB.m4 + matA.m5 * matB.m5 + matA.m8 * matB.m6, /*m6*/matA.m3 * matB.m4 + matA.m6 * matB.m5 + matA.m9 * matB.m6,
+/*m7*/matA.m1 * matB.m7 + matA.m4 * matB.m8 + matA.m7 * matB.m9, /*m8*/matA.m2 * matB.m7 + matA.m5 * matB.m8 + matA.m8 * matB.m9, /*m9*/matA.m3 * matB.m7 + matA.m6 * matB.m8 + matA.m9 * matB.m9);
         }
 
 
