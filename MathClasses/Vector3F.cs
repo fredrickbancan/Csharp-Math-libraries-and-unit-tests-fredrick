@@ -78,7 +78,7 @@ namespace MathClasses
 
         public float Magnitude()
         {
-            return (float)Math.Ceiling(Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z));
+            return (float)Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
         }
 
         public void Normalize()

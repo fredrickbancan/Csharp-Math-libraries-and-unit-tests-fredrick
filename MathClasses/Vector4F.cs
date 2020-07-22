@@ -76,5 +76,25 @@ namespace MathClasses
         {
             return this.x * vec.x + this.y * vec.y + this.z * vec.z + this.w * vec.w;
         }
+        public float Magnitude()
+        {
+            return (float)Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
+        }
+
+        public void Normalize()
+        {
+            float length = this.Magnitude();
+            if (length != 0)
+            {
+                this.x /= length;
+                this.y /= length;
+                this.z /= length;
+                this.w /= length;
+            }
+            else
+            {
+                this.x = this.y = this.z = this.w = 0;
+            }
+        }
     }
 }
