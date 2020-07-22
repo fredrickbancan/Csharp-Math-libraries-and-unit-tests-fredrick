@@ -206,21 +206,21 @@ namespace UnitTestProject
             Assert.IsTrue(compare(v4a, new Vector4F(0.270935f, -0.0537745f, 0.961094f, 0)));
         }
 
- /*     [TestMethod]
+      [TestMethod]
         public void Matrix3SetRotateX()
         {
             Matrix3F m3a = new Matrix3F();
-            m3a.SetRotateX(3.98f);
+            m3a.SetRotateX(3.98f);      
 
             Assert.IsTrue(compare(m3a,
                 new Matrix3F(1, 0, 0, 0, -0.668648f, -0.743579f, 0, 0.743579f, -0.668648f)));
         }
-
+        
         [TestMethod]
         public void Matrix4SetRotateX()
         {
             Matrix4F m4a = new Matrix4F();
-            m4a.SetRotateX(4.5f);
+            m4a.SetRotateX(4.5f);       
 
             Assert.IsTrue(compare(m4a,
                 new Matrix4F(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1)));
@@ -230,12 +230,12 @@ namespace UnitTestProject
         public void Matrix3SetRotateY()
         {
             Matrix3F m3b = new Matrix3F();
-            m3b.SetRotateY(1.76f);
+            m3b.SetRotateY(1.76f);     
 
             Assert.IsTrue(compare(m3b,
                 new Matrix3F(-0.188077f, 0, -0.982154f, 0, 1, 0, 0.982154f, 0, -0.188077f)));
         }
-
+/*
         [TestMethod]
         public void Matrix4SetRotateY()
         {
