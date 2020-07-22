@@ -32,6 +32,16 @@ namespace MathClasses
             this.w = copyVector.w;
         }
 
+        //matrix vector operators
+        public static Vector4F operator *(Matrix4F mat, Vector4F vec) // column major vector multiplication
+        {
+            return new Vector4F(
+                    /*X*/mat.m1 * vec.x + mat.m5 * vec.y + mat.m9 * vec.z + mat.m13 * vec.w,
+                    /*Y*/mat.m2 * vec.x + mat.m6 * vec.y + mat.m10 * vec.z + mat.m14 * vec.w,
+                    /*Z*/mat.m3 * vec.x + mat.m7 * vec.y + mat.m11 * vec.z + mat.m15 * vec.w,
+                    /*W*/mat.m4 * vec.x + mat.m8 * vec.y + mat.m12 * vec.z + mat.m16 * vec.w);
+        }
+
         //vector vector operators
         public static Vector4F operator + (Vector4F a, Vector4F b)
         {

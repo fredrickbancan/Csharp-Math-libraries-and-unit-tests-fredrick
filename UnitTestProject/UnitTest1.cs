@@ -235,7 +235,7 @@ namespace UnitTestProject
             Assert.IsTrue(compare(m3b,
                 new Matrix3F(-0.188077f, 0, -0.982154f, 0, 1, 0, 0.982154f, 0, -0.188077f)));
         }
-/*
+
         [TestMethod]
         public void Matrix4SetRotateY()
         {
@@ -291,7 +291,7 @@ namespace UnitTestProject
             Assert.IsTrue(compare(v3c,
                 new Vector3F(-22.5994224548f, 44.6950683594f, 862)));
         }
-
+        
         [TestMethod]
         public void Vector4MatrixTransform()
         {
@@ -347,7 +347,7 @@ namespace UnitTestProject
             Assert.IsTrue(compare(m4d,
                 new Matrix4F(-0.644213855267f, -0.565019249916f, 0.515501439571f, 0, -0.659384667873f, 0.751805722713f, 0, 0, -0.387556940317f, -0.339913755655f, -0.856888711452f, 0, 0, 0, 0, 1)));
         }
-
+/*
         [TestMethod]
         public void Vector3MatrixTranslation()
         {

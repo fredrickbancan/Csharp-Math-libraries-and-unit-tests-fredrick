@@ -77,6 +77,15 @@ namespace MathClasses
             return new Vector3F(a.x * b, a.y * b, a.z * b);
         }
 
+        //matrix vector operators
+        public static Vector3F operator * (Matrix3F mat, Vector3F vec) // column major vector multiplication
+        {
+            return new Vector3F(
+                    /*X*/mat.m1 * vec.x + mat.m4 * vec.y + mat.m7 * vec.z,
+                    /*Y*/mat.m2 * vec.x + mat.m5 * vec.y + mat.m8 * vec.z,
+                    /*Z*/mat.m3 * vec.x + mat.m6 * vec.y + mat.m9 * vec.z);
+        }
+
         //funcs
         public float Dot(Vector3F vec)
         {
