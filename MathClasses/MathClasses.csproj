@@ -45,7 +45,7 @@
     <Compile Include="Colour.cs" />
     <Compile Include="Matrix3F.cs" />
     <Compile Include="Matrix4F.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Application.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector3F.cs" />
     <Compile Include="Vector4F.cs" />

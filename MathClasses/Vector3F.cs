@@ -18,7 +18,7 @@ namespace MathClasses
             this.y = y;
             this.z = z;
         }
-        public Vector3F(float w = 0)
+        public Vector3F(float w)
         {
             this.x = y = this.z = w;
         }
@@ -76,6 +76,24 @@ namespace MathClasses
             return this.x * vec.x + this.y * vec.y + this.z * vec.z;
         }
 
+        public float Magnitude()
+        {
+            return (float)Math.Ceiling(Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z));
+        }
 
+        public void Normalize()
+        {
+            float length = this.Magnitude();
+            if (length != 0)
+            {
+                this.x /= length;
+                this.y /= length;
+                this.z /= length;
+            }
+            else
+            {
+                this.x = this.y = this.z = 0;
+            }
+        }
     }
 }

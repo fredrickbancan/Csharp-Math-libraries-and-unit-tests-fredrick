@@ -149,7 +149,7 @@ namespace UnitTestProject
 
             Assert.AreEqual(dot4, -10468.9375f, DEFAULT_TOLERANCE);
         }
-
+/*
         [TestMethod]
         public void Vector3Cross()
         {
@@ -550,6 +550,6 @@ namespace UnitTestProject
             c.SetAlpha(0x78);
 
             Assert.AreEqual<UInt32>(c.colour, 0x00000078);
-        }
+        }*/
     }
 }
