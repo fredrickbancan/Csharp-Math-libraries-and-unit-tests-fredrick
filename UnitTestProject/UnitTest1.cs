@@ -149,7 +149,7 @@ namespace UnitTestProject
 
             Assert.AreEqual(dot4, -10468.9375f, DEFAULT_TOLERANCE);
         }
-/*
+
         [TestMethod]
         public void Vector3Cross()
         {
@@ -206,7 +206,7 @@ namespace UnitTestProject
             Assert.IsTrue(compare(v4a, new Vector4F(0.270935f, -0.0537745f, 0.961094f, 0)));
         }
 
-        [TestMethod]
+ /*     [TestMethod]
         public void Matrix3SetRotateX()
         {
             Matrix3F m3a = new Matrix3F();

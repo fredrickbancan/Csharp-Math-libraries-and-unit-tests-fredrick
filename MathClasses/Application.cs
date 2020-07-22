@@ -8,7 +8,7 @@ namespace MathClasses
 {
     class Application
     {
-        //simple program to illustrate different vector manipulations. Unrelated to assignment and non required.
+        //simple program to illustrate different vector and matrix manipulations. Unrelated to assignment and non required.
         static void Main(string[] args)
         {
             do
@@ -76,7 +76,7 @@ namespace MathClasses
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(" (e.g 4, 0.1, -3): ");
                 Console.ForegroundColor = color == 0 ? ConsoleColor.Blue : ConsoleColor.Yellow;
-                String input = Console.ReadLine();
+                String input = Console.ReadLine().ToUpper().Replace('F', ' ');
                 Console.ForegroundColor = ConsoleColor.White;
                 try
                 {
@@ -102,7 +102,7 @@ namespace MathClasses
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(" (e.g 4, 0.1, -3, 23): ");
                 Console.ForegroundColor = color == 0 ? ConsoleColor.Blue : ConsoleColor.Yellow;
-                String input = Console.ReadLine();
+                String input = Console.ReadLine().ToUpper().Replace('F', ' ');
                 Console.ForegroundColor = ConsoleColor.White;
 
                 try
@@ -176,7 +176,7 @@ namespace MathClasses
         public static void printVectorCrossProduct(Vector3F vecA, Vector3F vecB, String vecAName, String vecBName)
         {
             Vector3F crossProduct = vecA.Cross(vecB);
-            Console.Write("Dot product for ");
+            Console.Write("Cross product for ");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(vecAName);
             Console.ForegroundColor = ConsoleColor.White;

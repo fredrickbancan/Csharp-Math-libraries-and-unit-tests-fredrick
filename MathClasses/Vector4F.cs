@@ -107,7 +107,7 @@ namespace MathClasses
         }
         public Vector4F Cross(Vector4F vec)
         {
-            return new Vector4F(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.w * vec.x - this.x * vec.w, this.x * vec.y - this.y * vec.x);
+            return new Vector4F(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x, 0);
         }
     }
 }
