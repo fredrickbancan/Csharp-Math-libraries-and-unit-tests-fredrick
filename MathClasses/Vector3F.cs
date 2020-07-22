@@ -12,6 +12,7 @@ namespace MathClasses
     {
         public float x, y, z;
 
+        //constructors
         public Vector3F(float x = 0, float y = 0, float z = 0)
         {
             this.x = x;
@@ -21,6 +22,12 @@ namespace MathClasses
         public Vector3F(float w)
         {
             this.x = y = this.z = w;
+        }
+        public Vector3F(Vector3F copyVector)
+        {
+            this.x = copyVector.x;
+            this.y = copyVector.y;
+            this.z = copyVector.z;
         }
 
         //vector vector operators
@@ -94,6 +101,11 @@ namespace MathClasses
             {
                 this.x = this.y = this.z = 0;
             }
+        }
+        
+        public Vector3F Cross(Vector3F vec)
+        {
+            return new Vector3F(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x);
         }
     }
 }

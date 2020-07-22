@@ -10,6 +10,7 @@ namespace MathClasses
     {
         public float x, y, z, w;
 
+        //constructors
         public Vector4F(float x = 0, float y = 0, float z = 0, float w = 0)
         {
             this.x = x;
@@ -18,9 +19,17 @@ namespace MathClasses
             this.w = w;
         }
 
-        public Vector4F(float j = 0)
+        public Vector4F(float j)
         {
             this.x = this.y = this.z = this.w = j; 
+        }
+
+        public Vector4F(Vector4F copyVector)
+        {
+            this.x = copyVector.x;
+            this.y = copyVector.y;
+            this.z = copyVector.z;
+            this.w = copyVector.w;
         }
 
         //vector vector operators
@@ -84,7 +93,7 @@ namespace MathClasses
         public void Normalize()
         {
             float length = this.Magnitude();
-            if (length != 0)
+            if (length != 0) //cannot divide by zero
             {
                 this.x /= length;
                 this.y /= length;
@@ -95,6 +104,10 @@ namespace MathClasses
             {
                 this.x = this.y = this.z = this.w = 0;
             }
+        }
+        public Vector4F Cross(Vector4F vec)
+        {
+            return new Vector4F(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.w * vec.x - this.x * vec.w, this.x * vec.y - this.y * vec.x);
         }
     }
 }
