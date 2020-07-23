@@ -9,7 +9,8 @@ namespace MathClasses
     public class Colour
     {
         public UInt32 colour;
-
+        
+        //constructors
         public Colour()
         {
             colour = 0;
@@ -20,6 +21,7 @@ namespace MathClasses
             colour = (UInt32)(r << 24 | g << 16 | b << 8 | a);
         }
 
+        //get functions
         public byte GetRed()
         {
             return (byte)(colour >> 24);
@@ -37,6 +39,7 @@ namespace MathClasses
             return (byte)(colour);
         }
 
+        //set functions
         public void SetRed(byte red)
         {
             colour |= (UInt32) red << 24;
