@@ -15,6 +15,10 @@ namespace MathClasses
         {
             colour = 0;
         }
+        public Colour(UInt32 color)
+        {
+            this.colour = color;
+        }
 
         public Colour(byte r, byte g, byte b, byte a)
         {

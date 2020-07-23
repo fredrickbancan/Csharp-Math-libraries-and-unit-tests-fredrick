@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MathClasses
 {
@@ -17,7 +19,7 @@ namespace MathClasses
                 byte typeChoice = 0;
                 do
                 {
-                    typeChoice = getVectorTypeChoice();
+                    typeChoice = getTypeChoiceFromUser();
                 }
                 while (typeChoice == 0);
 
@@ -25,6 +27,7 @@ namespace MathClasses
                 Vector3F vec3B = null;
                 Vector4F vec4A = null;
                 Vector4F vec4B = null;
+                Colour color   = null;
 
                 if (typeChoice == 1)
                 {
@@ -42,7 +45,7 @@ namespace MathClasses
                     printVectorDotProduct(vec3A, vec3B, "Vector A", "Vector B");
                     printVectorCrossProduct(vec3A, vec3B, "Vector A", "Vector B");
                 }
-                else
+                else if(typeChoice == 2)
                 {
                     vec4A = getVector4FFromInput("Vector A");
                     if (vec4A == null) continue;
@@ -57,6 +60,12 @@ namespace MathClasses
 
                     printVectorDotProduct(vec4A, vec4B, "Vector A", "Vector B");
                     printVectorCrossProduct(vec4A, vec4B, "Vector A", "Vector B");
+                }
+                else
+                {
+                    color = getColourFromInput("Colour");
+                    printColour(color, "Colour");
+                    Console.WriteLine();
                 }
 
                 Console.WriteLine();
@@ -118,6 +127,35 @@ namespace MathClasses
             while (true);
         }
 
+        public static Colour getColourFromInput(String colourName)
+        {
+            do
+            {
+                Console.Write("Enter value for ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(colourName);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(" (e.g 00ffff or 00ffff00 or FF00FF or #FFA500 etc): ");
+                Console.ForegroundColor = ConsoleColor.White;
+                String input = Console.ReadLine().ToLower().Replace('#', ' ').TrimStart();
+                //add extra F or FF at end of input if user does not specify alpha values
+                while(input.Length < 8)
+                {
+                    input += "f";
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+
+                try
+                {
+                    return new Colour((UInt32)int.Parse(input, System.Globalization.NumberStyles.HexNumber));
+                }
+                catch
+                {
+                    warn("Input invalid, try again please.");
+                }
+            }
+            while (true);
+        }
         //displays the x,y and z values of the provided vector in a neat fashion
         public static void printVector(Vector3F vec, String vecName, byte color = 0)
         {
@@ -273,12 +311,36 @@ namespace MathClasses
             Console.WriteLine();
         }
 
+        //displays the r, g, b and a values of the provided color in a neat fashion
+        public static void printColour(Colour color, String colorName)
+        {
+            Console.WriteLine();
+            Console.Write("Info for ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(colorName);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(":\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("RED  : " + color.GetRed());
+            Console.WriteLine("GREEN: " + color.GetGreen());
+            Console.WriteLine("BLUE : " + color.GetBlue());
+            Console.WriteLine("ALPHA: " + color.GetAlpha());
+            Form tempForm = new Form();
+            tempForm.BackColor = System.Drawing.Color.FromArgb(255, color.GetRed(), color.GetGreen(), color.GetBlue());
+            tempForm.SetDesktopBounds(1000, 1000, 1000, 1000);
+            tempForm.Show();
+            MessageBox.Show("This is your color! (Ignoring alpha values)\nPress OK to close...");
+            tempForm.Close();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+        }
         /*returns the choce of the user as a byte, 0 if error.*/
-        public static byte getVectorTypeChoice()
+        public static byte getTypeChoiceFromUser()
         {
             Console.WriteLine("Press the number key for which vector type you want to test:");
             Console.WriteLine("1: for Vector 3");
             Console.WriteLine("2: for Vector 4");
+            Console.WriteLine("3: for Colour");
             Console.WriteLine("Escape: to quit");
             ConsoleKeyInfo keyToCheck = Console.ReadKey();
             if (keyToCheck.Key == ConsoleKey.Escape)
@@ -289,8 +351,10 @@ namespace MathClasses
             {
                 if (byte.Parse(keyToCheck.KeyChar.ToString()) == 1)
                     return 1;
-                else
+                if (byte.Parse(keyToCheck.KeyChar.ToString()) == 2)
                     return 2;
+                
+                    return 3;
             }
             warn("Invalid Input. Try again.");
             return 0;
