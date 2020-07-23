@@ -347,7 +347,7 @@ namespace UnitTestProject
             Assert.IsTrue(compare(m4d,
                 new Matrix4F(-0.644213855267f, -0.565019249916f, 0.515501439571f, 0, -0.659384667873f, 0.751805722713f, 0, 0, -0.387556940317f, -0.339913755655f, -0.856888711452f, 0, 0, 0, 0, 1)));
         }
-/*
+
         [TestMethod]
         public void Vector3MatrixTranslation()
         {
@@ -550,6 +550,6 @@ namespace UnitTestProject
             c.SetAlpha(0x78);
 
             Assert.AreEqual<UInt32>(c.colour, 0x00000078);
-        }*/
+        }
     }
 }

@@ -13,7 +13,13 @@ namespace MathClasses
         public float x, y, z;
 
         //constructors
-        public Vector3F(float x = 0, float y = 0, float z = 0)
+        public Vector3F()
+        {
+            this.x = 0;
+            this.y = 0;
+            this.z = 0;
+        }
+        public Vector3F(float x, float y, float z)
         {
             this.x = x;
             this.y = y;

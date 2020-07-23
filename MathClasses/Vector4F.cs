@@ -11,7 +11,16 @@ namespace MathClasses
         public float x, y, z, w;
 
         //constructors
-        public Vector4F(float x = 0, float y = 0, float z = 0, float w = 0)
+
+        public Vector4F()
+        {
+            this.x = 0;
+            this.y = 0;
+            this.z = 0;
+            this.w = 0;
+        }
+
+        public Vector4F(float x, float y, float z, float w)
         {
             this.x = x;
             this.y = y;

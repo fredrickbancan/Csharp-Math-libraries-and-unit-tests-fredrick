@@ -15,5 +15,43 @@ namespace MathClasses
             colour = 0;
         }
 
+        public Colour(byte r, byte g, byte b, byte a)
+        {
+            colour = (UInt32)(r << 24 | g << 16 | b << 8 | a);
+        }
+
+        public byte GetRed()
+        {
+            return (byte)(colour >> 24);
+        }
+        public byte GetGreen()
+        {
+            return (byte)(colour >> 16);
+        }
+        public byte GetBlue()
+        {
+            return (byte)(colour >> 8);
+        }
+        public byte GetAlpha()
+        {
+            return (byte)(colour);
+        }
+
+        public void SetRed(byte red)
+        {
+            colour |= (UInt32) red << 24;
+        }
+        public void SetGreen(byte green)
+        {
+            colour |= (UInt32)green << 16;
+        }
+        public void SetBlue(byte blue)
+        {
+            colour |= (UInt32)blue << 8;
+        }
+        public void SetAlpha(byte alpha)
+        {
+            colour |= (UInt32)alpha;
+        }
     }
 }
