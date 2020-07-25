@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Vector4F
+    public class Vector4
     {
         public float x, y, z, w;
 
         //constructors
 
-        public Vector4F()
+        public Vector4()
         {
             this.x = 0;
             this.y = 0;
@@ -20,7 +20,7 @@ namespace MathClasses
             this.w = 0;
         }
 
-        public Vector4F(float x, float y, float z, float w)
+        public Vector4(float x, float y, float z, float w)
         {
             this.x = x;
             this.y = y;
@@ -28,12 +28,12 @@ namespace MathClasses
             this.w = w;
         }
 
-        public Vector4F(float j)
+        public Vector4(float j)
         {
             this.x = this.y = this.z = this.w = j; 
         }
 
-        public Vector4F(Vector4F copyVector)
+        public Vector4(Vector4 copyVector)
         {
             this.x = copyVector.x;
             this.y = copyVector.y;
@@ -42,9 +42,9 @@ namespace MathClasses
         }
 
         //matrix vector operators
-        public static Vector4F operator *(Matrix4F mat, Vector4F vec) // column major vector multiplication
+        public static Vector4 operator *(Matrix4 mat, Vector4 vec) // column major vector multiplication
         {
-            return new Vector4F(
+            return new Vector4(
                     /*X*/mat.m1 * vec.x + mat.m5 * vec.y + mat.m9 * vec.z + mat.m13 * vec.w,
                     /*Y*/mat.m2 * vec.x + mat.m6 * vec.y + mat.m10 * vec.z + mat.m14 * vec.w,
                     /*Z*/mat.m3 * vec.x + mat.m7 * vec.y + mat.m11 * vec.z + mat.m15 * vec.w,
@@ -52,55 +52,55 @@ namespace MathClasses
         }
 
         //vector vector operators
-        public static Vector4F operator + (Vector4F a, Vector4F b)
+        public static Vector4 operator + (Vector4 a, Vector4 b)
         {
-            return new Vector4F(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+            return new Vector4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
         }
 
-        public static Vector4F operator - (Vector4F a, Vector4F b)
+        public static Vector4 operator - (Vector4 a, Vector4 b)
         {
-            return new Vector4F(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+            return new Vector4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
         }
 
-        public static Vector4F operator * (Vector4F a, Vector4F b)
+        public static Vector4 operator * (Vector4 a, Vector4 b)
         {
-            return new Vector4F(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
+            return new Vector4(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
         }
 
         //Float operators, post
-        public static Vector4F operator + (Vector4F a, float b)
+        public static Vector4 operator + (Vector4 a, float b)
         {
-            return new Vector4F(a.x + b, a.y + b, a.z + b, a.w + b);
+            return new Vector4(a.x + b, a.y + b, a.z + b, a.w + b);
         }
 
-        public static Vector4F operator - (Vector4F a, float b)
+        public static Vector4 operator - (Vector4 a, float b)
         {
-            return new Vector4F(a.x - b, a.y - b, a.z - b, a.w - b);
+            return new Vector4(a.x - b, a.y - b, a.z - b, a.w - b);
         }
 
-        public static Vector4F operator * (Vector4F a, float b)
+        public static Vector4 operator * (Vector4 a, float b)
         {
-            return new Vector4F(a.x * b, a.y * b, a.z * b, a.w * b);
+            return new Vector4(a.x * b, a.y * b, a.z * b, a.w * b);
         }
 
         //Float operators, pre
-        public static Vector4F operator + (float b, Vector4F a)
+        public static Vector4 operator + (float b, Vector4 a)
         {
-            return new Vector4F(a.x + b, a.y + b, a.z + b, a.w + b);
+            return new Vector4(a.x + b, a.y + b, a.z + b, a.w + b);
         }
 
-        public static Vector4F operator - (float b, Vector4F a)
+        public static Vector4 operator - (float b, Vector4 a)
         {
-            return new Vector4F(a.x - b, a.y - b, a.z - b, a.w - b);
+            return new Vector4(a.x - b, a.y - b, a.z - b, a.w - b);
         }
 
-        public static Vector4F operator * (float b, Vector4F a)
+        public static Vector4 operator * (float b, Vector4 a)
         {
-            return new Vector4F(a.x * b, a.y * b, a.z * b, a.w * b);
+            return new Vector4(a.x * b, a.y * b, a.z * b, a.w * b);
         }
 
         //funcs
-        public float Dot(Vector4F vec)
+        public float Dot(Vector4 vec)
         {
             return this.x * vec.x + this.y * vec.y + this.z * vec.z + this.w * vec.w;
         }
@@ -124,9 +124,9 @@ namespace MathClasses
                 this.x = this.y = this.z = this.w = 0;
             }
         }
-        public Vector4F Cross(Vector4F vec)
+        public Vector4 Cross(Vector4 vec)
         {
-            return new Vector4F(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x, 0);
+            return new Vector4(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x, 0);
         }
     }
 }

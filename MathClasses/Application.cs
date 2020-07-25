@@ -23,10 +23,10 @@ namespace MathClasses
                 }
                 while (typeChoice == 0);
 
-                Vector3F vec3A = null;
-                Vector3F vec3B = null;
-                Vector4F vec4A = null;
-                Vector4F vec4B = null;
+                Vector3 vec3A = null;
+                Vector3 vec3B = null;
+                Vector4 vec4A = null;
+                Vector4 vec4B = null;
                 Colour color   = null;
 
                 if (typeChoice == 1)
@@ -75,7 +75,7 @@ namespace MathClasses
         }
 
         //returns a new vector3 based on inputs in input string, format: x, y, z    0.4,-1,2   etc
-        public static Vector3F getVector3FFromInput(String vectorName, byte color = 0)
+        public static Vector3 getVector3FFromInput(String vectorName, byte color = 0)
         {
             do
             {
@@ -90,7 +90,7 @@ namespace MathClasses
                 try
                 {
                     float[] floatsFromString = Array.ConvertAll(input.Split(','), float.Parse); // gets floats from string
-                    return new Vector3F(floatsFromString[0], floatsFromString[1], floatsFromString[2]);
+                    return new Vector3(floatsFromString[0], floatsFromString[1], floatsFromString[2]);
                 }
                 catch 
                 {
@@ -101,7 +101,7 @@ namespace MathClasses
         }
 
         //returns a new vector4 based on inputs in input string, format: x, y, z, 4   0.4,-1,2,1   etc
-        public static Vector4F getVector4FFromInput(String vectorName, byte color = 0)
+        public static Vector4 getVector4FFromInput(String vectorName, byte color = 0)
         {
             do
             {
@@ -117,7 +117,7 @@ namespace MathClasses
                 try
                 {
                     float[] floatsFromString = Array.ConvertAll(input.Split(','), float.Parse); // gets floats from string
-                    return new Vector4F(floatsFromString[0], floatsFromString[1], floatsFromString[2], floatsFromString[3]);
+                    return new Vector4(floatsFromString[0], floatsFromString[1], floatsFromString[2], floatsFromString[3]);
                 }
                 catch
                 {
@@ -157,7 +157,7 @@ namespace MathClasses
             while (true);
         }
         //displays the x,y and z values of the provided vector in a neat fashion
-        public static void printVector(Vector3F vec, String vecName, byte color = 0)
+        public static void printVector(Vector3 vec, String vecName, byte color = 0)
         {
             Console.Write("Info for ");
             Console.ForegroundColor = color == 0 ? ConsoleColor.Blue : ConsoleColor.Yellow;
@@ -174,9 +174,9 @@ namespace MathClasses
         }
 
         //displays the x,y and z values of the provided vector in a neat fashion
-        public static void printVectorNormalized(Vector3F vec, String vecName, byte color = 0)
+        public static void printVectorNormalized(Vector3 vec, String vecName, byte color = 0)
         {
-            Vector3F vecCopy = new Vector3F(vec);
+            Vector3 vecCopy = new Vector3(vec);
             vecCopy.Normalize();
             Console.Write("Info for ");
             Console.ForegroundColor = color == 0 ? ConsoleColor.Blue : ConsoleColor.Yellow;
@@ -193,7 +193,7 @@ namespace MathClasses
         }
 
         //prints the dot product of the two provided vectors
-        public static void printVectorDotProduct(Vector3F vecA, Vector3F vecB, String vecAName, String vecBName)
+        public static void printVectorDotProduct(Vector3 vecA, Vector3 vecB, String vecAName, String vecBName)
         {
             Console.Write("Dot product for ");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -211,9 +211,9 @@ namespace MathClasses
         }
 
         //prints the dot product of the two provided vectors
-        public static void printVectorCrossProduct(Vector3F vecA, Vector3F vecB, String vecAName, String vecBName)
+        public static void printVectorCrossProduct(Vector3 vecA, Vector3 vecB, String vecAName, String vecBName)
         {
-            Vector3F crossProduct = vecA.Cross(vecB);
+            Vector3 crossProduct = vecA.Cross(vecB);
             Console.Write("Cross product for ");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(vecAName);
@@ -233,7 +233,7 @@ namespace MathClasses
         }
 
         //displays the x,y,z and w values of the provided vector in a neat fashion
-        public static void printVector(Vector4F vec, String vecName, byte color = 0)
+        public static void printVector(Vector4 vec, String vecName, byte color = 0)
         {
             Console.Write("Info for ");
             Console.ForegroundColor = color == 0 ? ConsoleColor.Blue : ConsoleColor.Yellow;
@@ -251,9 +251,9 @@ namespace MathClasses
         }
 
         //displays the x,y,z and w values of the provided vector in a neat fashion
-        public static void printVectorNormalized(Vector4F vec, String vecName, byte color = 0)
+        public static void printVectorNormalized(Vector4 vec, String vecName, byte color = 0)
         {
-            Vector4F vecCopy = new Vector4F(vec);
+            Vector4 vecCopy = new Vector4(vec);
             vecCopy.Normalize();
             Console.Write("Info for ");
             Console.ForegroundColor = color == 0 ? ConsoleColor.Blue : ConsoleColor.Yellow;
@@ -271,7 +271,7 @@ namespace MathClasses
         }
 
         //prints the dot product of the two provided vectors
-        public static void printVectorDotProduct(Vector4F vecA, Vector4F vecB, String vecAName, String vecBName)
+        public static void printVectorDotProduct(Vector4 vecA, Vector4 vecB, String vecAName, String vecBName)
         {
             Console.Write("Dot product for ");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -289,9 +289,9 @@ namespace MathClasses
         }
 
         //prints the dot product of the two provided vectors
-        public static void printVectorCrossProduct(Vector4F vecA, Vector4F vecB, String vecAName, String vecBName)
+        public static void printVectorCrossProduct(Vector4 vecA, Vector4 vecB, String vecAName, String vecBName)
         {
-            Vector4F crossProduct = vecA.Cross(vecB);
+            Vector4 crossProduct = vecA.Cross(vecB);
             Console.Write("Cross product for ");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(vecAName);
