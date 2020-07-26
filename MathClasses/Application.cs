@@ -23,18 +23,16 @@ namespace MathClasses
                 }
                 while (typeChoice == 0);
 
-                Vector3 vec3A = null;
-                Vector3 vec3B = null;
-                Vector4 vec4A = null;
-                Vector4 vec4B = null;
-                Colour color   = null;
+                Vector3 vec3A;
+                Vector3 vec3B;
+                Vector4 vec4A;
+                Vector4 vec4B;
+                Colour color;
 
                 if (typeChoice == 1)
                 {
                     vec3A = getVector3FFromInput("Vector A");
-                    if (vec3A == null) continue;
                     vec3B = getVector3FFromInput("Vector B", 1);
-                    if (vec3B == null) continue;
                     Console.WriteLine();
 
                     printVector(vec3A, "Vector A");
@@ -48,9 +46,7 @@ namespace MathClasses
                 else if(typeChoice == 2)
                 {
                     vec4A = getVector4FFromInput("Vector A");
-                    if (vec4A == null) continue;
                     vec4B = getVector4FFromInput("Vector B", 1);
-                    if (vec4B == null) continue;
                     Console.WriteLine();
 
                     printVector(vec4A, "Vector A");

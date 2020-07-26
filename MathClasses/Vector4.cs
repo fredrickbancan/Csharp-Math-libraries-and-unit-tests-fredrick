@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Vector4
+    public struct Vector4
     {
-        public float x, y, z, w;
+        public float x;
+        public float y;
+        public float z;
+        public float w;
 
         //constructors
 
-        public Vector4()
+        /*public Vector4F()
         {
             this.x = 0;
             this.y = 0;
             this.z = 0;
             this.w = 0;
-        }
+        }*/
 
         public Vector4(float x, float y, float z, float w)
         {
@@ -42,7 +41,7 @@ namespace MathClasses
         }
 
         //matrix vector operators
-        public static Vector4 operator *(Matrix4 mat, Vector4 vec) // column major vector multiplication
+        public static Vector4 operator * (Matrix4 mat, Vector4 vec) // column major vector multiplication
         {
             return new Vector4(
                     /*X*/mat.m1 * vec.x + mat.m5 * vec.y + mat.m9 * vec.z + mat.m13 * vec.w,
@@ -128,5 +127,6 @@ namespace MathClasses
         {
             return new Vector4(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x, 0);
         }
+
     }
 }

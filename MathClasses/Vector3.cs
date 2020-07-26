@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Vector3
+    public struct Vector3
     {
         public float x, y, z;
 
         //constructors
-        public Vector3()
+        /*public Vector3F()
         {
             this.x = 0;
             this.y = 0;
             this.z = 0;
-        }
+        }*/
         public Vector3(float x, float y, float z)
         {
             this.x = x;
@@ -27,7 +21,7 @@ namespace MathClasses
         }
         public Vector3(float w)
         {
-            this.x = y = this.z = w;
+            this.x = this.y = this.z = w;
         }
         public Vector3(Vector3 copyVector)
         {
@@ -118,27 +112,37 @@ namespace MathClasses
             }
         }
         
+        public static float magnitude(Vector3 vec)
+        {
+            return (float)Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+        }
         public Vector3 Cross(Vector3 vec)
         {
             return new Vector3(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x);
         }
         public static Vector3 normalize(Vector3 vec)
         {
-            Vector3 result = new Vector3(vec);
-            result.Normalize();
-            return result;
+            float length = magnitude(vec);
+            if (length != 0)
+            {
+                vec.x /= length;
+                vec.y /= length;
+                vec.z /= length;
+            }
+            else
+            {
+                vec.x = vec.y = vec.z = 0;
+            }
+            return vec;
         }
 
         public static Vector3 cross(Vector3 vecA, Vector3 vecB)
         {
-            Vector3 result = new Vector3(vecA);
-            result.Cross(vecB);
-            return result;
+            return new Vector3(vecA.y * vecB.z - vecA.z * vecB.y, vecA.z * vecB.x - vecA.x * vecB.z, vecA.x * vecB.y - vecA.y * vecB.x);
         }
         public static float dot(Vector3 vecA, Vector3 vecB)
         {
-            Vector3 result = new Vector3(vecA);
-            return result.Dot(vecB);
+            return vecA.x * vecB.x + vecA.y * vecB.y + vecA.z * vecB.z;
         }
     }
 }

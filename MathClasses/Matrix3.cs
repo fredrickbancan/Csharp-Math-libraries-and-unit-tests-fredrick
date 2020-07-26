@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Matrix3
+    public struct Matrix3
     {
         public Vector3 row0;
         public Vector3 row1;
         public Vector3 row2;
         #region constructors
-        public Matrix3(float identity = 1.0F)
+
+        public Matrix3(float identity)
         {
             row0 = new Vector3(identity, 0.0F, 0.0F);
             row1 = new Vector3(0.0F, identity, 0.0F);
@@ -97,7 +92,7 @@ namespace MathClasses
         }*/
         public static Matrix3 operator * (Matrix3 matA, Matrix3 matB) //column left row right
         {
-            Matrix3 result = new Matrix3();
+            Matrix3 result = new Matrix3(1.0F);
 
             result.row0.x = (matA.m1 * matB.m1) + (matA.m4 * matB.m2) + (matA.m7 * matB.m3);
             result.row0.y = (matA.m2 * matB.m1) + (matA.m5 * matB.m2) + (matA.m8 * matB.m3);
@@ -119,6 +114,7 @@ namespace MathClasses
         {
             float cos = (float)Math.Cos(rads);
             float sin = (float)Math.Sin(rads);
+            this.row0 = new Vector3(1.0F, 0.0F, 0.0F);
             this.row1 = new Vector3(0.0F, cos, sin);
             this.row2 = new Vector3(0.0F, -sin, cos);
         }
@@ -128,6 +124,7 @@ namespace MathClasses
             float cos = (float)Math.Cos(rads);
             float sin = (float)Math.Sin(rads);
             this.row0 = new Vector3(cos, 0.0F, -sin);
+            this.row1 = new Vector3(0.0F, 1.0F, 0.0F);
             this.row2 = new Vector3(sin, 0.0F, cos);
         }
 
@@ -137,6 +134,7 @@ namespace MathClasses
             float sin = (float)Math.Sin(rads);
             this.row0 = new Vector3(cos, sin, 0.0F);
             this.row1 = new Vector3(-sin, cos, 0.0F);
+            this.row2 = new Vector3(0.0F, 0.0F, 1.0F);
         }
         #endregion
     }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace MathClasses
 {
     static class MathUtil
@@ -12,6 +7,8 @@ namespace MathClasses
         {
             return (val - min/*amount between min and the value*/) / (max - min/*difference between min and max*/);
         }
+
+
         public static double radians(double degrees)
         {
             return degrees * 0.01745329251994329576923690768489D;

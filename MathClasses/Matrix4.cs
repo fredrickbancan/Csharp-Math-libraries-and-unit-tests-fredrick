@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Matrix4
+    public struct Matrix4
     {
         public Vector4 row0;
         public Vector4 row1;
@@ -14,7 +10,7 @@ namespace MathClasses
         public Vector4 row3;
 
         #region constructors
-        public Matrix4(float identity = 1.0F)
+        public Matrix4(float identity)
         {
             this.row0 = new Vector4(identity, 0, 0, 0);
             this.row1 = new Vector4(0, identity, 0, 0);
@@ -120,10 +116,12 @@ namespace MathClasses
             get { return this.row3.w; }
             set { this.row3.w = value; }
         }
+
+       
         #endregion
 
         #region matrix matrix operators
-       /* public static Matrix4 operator * (Matrix4 matA, Matrix4 matB) // Row left column right (standard)
+        /*public static Matrix4 operator * (Matrix4 matA, Matrix4 matB) // Row left column right (standard)
         {
             Matrix4 result = new Matrix4();
 
@@ -188,15 +186,19 @@ namespace MathClasses
         {
             float cos = (float)Math.Cos(rads);
             float sin = (float)Math.Sin(rads);
+            this.row0 = new Vector4(1.0F, 0.0F, 0.0F, 0.0F);
             this.row1 = new Vector4(0.0F, cos, sin, 0.0F);
             this.row2 = new Vector4(0.0F, -sin, cos, 0.0F);
+            this.row3 = new Vector4(0.0F, 0.0F, 0.0F, 1.0F);
         }
         public void SetRotateY(float rads)
         {
             float cos = (float)Math.Cos(rads);
             float sin = (float)Math.Sin(rads);
             this.row0 = new Vector4(cos, 0.0F, -sin, 0.0F);
+            this.row1 = new Vector4(0.0F, 1.0F, -0.0F, 0.0F);
             this.row2 = new Vector4(sin, 0.0F, cos, 0.0F);
+            this.row3 = new Vector4(0.0F, 0.0F, -0.0F, 1.0F);
         }
 
         public void SetRotateZ(float rads)
@@ -205,19 +207,21 @@ namespace MathClasses
             float sin = (float)Math.Sin(rads);
             this.row0 = new Vector4(cos, sin,0.0F, 0.0F);
             this.row1 = new Vector4(-sin, cos,0.0F, 0.0F);
+            this.row2 = new Vector4(0.0F, 0.0F, 1.0F, 0.0F);
+            this.row3= new Vector4(0.0F, 0.0F, 0.0F, 1.0F);
         }
 
-        public static Matrix4 lookAt(Vector3 eye, Vector3 target, Vector3 up)
-        {
-            Vector3 front = new Vector3(Vector3.normalize(eye - target));
-            Vector3 side = new Vector3(Vector3.cross(front, up));
-            Vector3 upVector = new Vector3(Vector3.cross(side, front));
+         public static Matrix4 lookAt(Vector3 eye, Vector3 target, Vector3 up)
+         {
+             Vector3 front = new Vector3(Vector3.normalize(eye - target));
+             Vector3 side = new Vector3(Vector3.cross(up, front));
+             Vector3 upVector = new Vector3(Vector3.cross(front, side));
 
-            Matrix4 translateToEye = createTranslationMatrix(-eye.x, -eye.y, -eye.z);
-            Matrix4 rotateToTarget = new Matrix4(new Vector4(side.x, upVector.x, front.x, 0.0F), new Vector4(side.y, upVector.y, front.y, 0.0F), new Vector4(side.z, upVector.z, front.z, 0.0F), new Vector4(0.0F, 0.0F, 0.0F, 1.0F));
-            
-            return translateToEye * rotateToTarget;
-        }
+             Matrix4 translateToEye = createTranslationMatrix(-eye.x, -eye.y, -eye.z);
+             Matrix4 rotateToTarget = new Matrix4(new Vector4(side.x, upVector.x, front.x, 0.0F), new Vector4(side.y, upVector.y, front.y, 0.0F), new Vector4(side.z, upVector.z, front.z, 0.0F), new Vector4(0.0F, 0.0F, 0.0F, 1.0F));
+
+             return translateToEye * rotateToTarget;
+         }
 
         public static Matrix4 createTranslationMatrix(float x, float y, float z)
         {
@@ -228,18 +232,19 @@ namespace MathClasses
 
         public static Matrix4 createPerspectiveMatrix(float fov, float aspectRatio, float zNear, float zFar)
         {
-            float yMax = zNear * (float)Math.Tan(0.5f * fov);
+            float yMax = zNear * (float)Math.Tan(0.5F * fov);
             float yMin = -yMax;
             float xMin = yMin * aspectRatio;
             float xMax = yMax * aspectRatio;
-            float x = (2.0F * zNear) / (xMax - xMin);
-            float y = (2.0F * zNear) / (yMax - yMin);
+            float x = 2.0F * zNear / (xMax - xMin);
+            float y = 2.0F * zNear / (yMax - yMin);
             float a = (xMax + xMin) / (xMax - xMin);
             float b = (yMax + yMin) / (yMax - yMin);
             float c = -(zFar + zNear) / (zFar - zNear);
             float d = -(2.0F * zFar * zNear) / (zFar - zNear);
             return new Matrix4(new Vector4(x, 0, 0, 0), new Vector4(0, y, 0, 0), new Vector4(a, b, c, -1), new Vector4(0, 0, d, 0));
         }
+      
         #endregion
     }
 }
