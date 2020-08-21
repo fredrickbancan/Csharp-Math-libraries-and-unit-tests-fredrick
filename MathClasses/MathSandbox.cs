@@ -1,18 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MathClasses
 {
-    class Application
+    class MathSandbox
     {
         //simple program to illustrate different vector and matrix manipulations. Unrelated to assignment and non required.
         static void Main(string[] args)
         {
+            
             do
             {
                 Console.Clear();

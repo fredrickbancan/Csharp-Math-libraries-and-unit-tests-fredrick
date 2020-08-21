@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace MathClasses
 {
     public struct Colour
@@ -77,6 +78,17 @@ namespace MathClasses
         public void SetAlpha(byte alpha)
         {
             colour |= (UInt32)alpha;
+        }
+
+        public void HalfBrightness()
+        {
+            byte red = this.GetRed();
+            byte green = this.GetGreen();
+            byte blue = this.GetBlue();
+
+            this.SetRed((byte)(red / 2));
+            this.SetGreen((byte)(green / 2));
+            this.SetBlue((byte)(blue / 2));
         }
     }
 }

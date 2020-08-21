@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MathClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MathClasses;
+using System;
 
 namespace UnitTestProject
 {
@@ -550,6 +550,16 @@ namespace UnitTestProject
             c.SetAlpha(0x78);
 
             Assert.AreEqual<UInt32>(c.colour, 0x00000078);
+        }
+
+        [TestMethod]/*ADDED BY FREDRICK FOR SUBMISSION, I HAVE NO IDEA WHY THIS DOES NOT WORK :(*/
+        public void TestColourHalfBrightness()
+        {
+            // homogeneous point translation
+            Colour c = new Colour(0xFFFFFFFF);
+            c.HalfBrightness();
+
+            Assert.AreEqual<UInt32>(c.colour, 0x7F7F7FFF);
         }
     }
 }

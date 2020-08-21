@@ -211,6 +211,7 @@ namespace MathClasses
             this.row3= new Vector4(0.0F, 0.0F, 0.0F, 1.0F);
         }
 
+        /*Creates a matrix to rotate to a directional target.*/
          public static Matrix4 lookAt(Vector3 eye, Vector3 target, Vector3 up)
          {
              Vector3 front = new Vector3(Vector3.normalize(eye - target));
@@ -230,6 +231,7 @@ namespace MathClasses
             return result;
         }
 
+        /*Creates a matrix for transforming a scene with perspecive*/        
         public static Matrix4 createPerspectiveMatrix(float fov, float aspectRatio, float zNear, float zFar)
         {
             float yMax = zNear * (float)Math.Tan(0.5F * fov);
@@ -244,7 +246,18 @@ namespace MathClasses
             float d = -(2.0F * zFar * zNear) / (zFar - zNear);
             return new Matrix4(new Vector4(x, 0, 0, 0), new Vector4(0, y, 0, 0), new Vector4(a, b, c, -1), new Vector4(0, 0, d, 0));
         }
-      
+
+        /*Flips this matrix along the diagonal.*/
+        Matrix4 GetTransposed()
+        {
+            // flip row and column
+            return new Matrix4(
+                m1, m5, m9, m13,
+                m2, m6, m10,m14,
+                m3, m7, m11,m15,
+                m4, m8, m12,m16
+                );
+        }
         #endregion
     }
 }

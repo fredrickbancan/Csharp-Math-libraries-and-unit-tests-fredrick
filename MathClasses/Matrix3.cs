@@ -136,6 +136,17 @@ namespace MathClasses
             this.row1 = new Vector3(-sin, cos, 0.0F);
             this.row2 = new Vector3(0.0F, 0.0F, 1.0F);
         }
+
+        /*Flips this matrix along the diagonal.*/
+        Matrix3 GetTransposed()
+        {
+            // flip row and column
+            return new Matrix3(
+                m1, m4, m7,
+                m2, m5, m8,
+                m3, m6, m9
+                );
+        }
         #endregion
     }
 }
