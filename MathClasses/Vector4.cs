@@ -99,15 +99,19 @@ namespace MathClasses
         }
 
         //funcs
+        /*returns the dot product of instance with the provided vector*/
         public float Dot(Vector4 vec)
         {
             return this.x * vec.x + this.y * vec.y + this.z * vec.z + this.w * vec.w;
         }
+
+        /*returns the magnitude of this vector*/
         public float Magnitude()
         {
             return (float)Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
         }
 
+        /*scales this vector down to a length of 1 while maintaining direction*/
         public void Normalize()
         {
             float length = this.Magnitude();
@@ -123,6 +127,7 @@ namespace MathClasses
                 this.x = this.y = this.z = this.w = 0;
             }
         }
+        /*returns a new vector purpendicular to instance and provided vector*/
         public Vector4 Cross(Vector4 vec)
         {
             return new Vector4(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x, 0);

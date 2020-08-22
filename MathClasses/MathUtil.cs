@@ -1,5 +1,4 @@
-﻿using System;
-namespace MathClasses
+﻿namespace MathClasses
 {
     static class MathUtil
     {
@@ -9,6 +8,7 @@ namespace MathClasses
         }
 
 
+        /*Converts degrees to radians*/
         public static double radians(double degrees)
         {
             return degrees * 0.01745329251994329576923690768489D;

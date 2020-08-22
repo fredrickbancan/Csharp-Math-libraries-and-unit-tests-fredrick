@@ -4,6 +4,7 @@ namespace MathClasses
 {
     public struct Matrix4
     {
+        /*Matrix values are stored in vector 4's in row order*/
         public Vector4 row0;
         public Vector4 row1;
         public Vector4 row2;
@@ -182,6 +183,7 @@ namespace MathClasses
         #endregion
 
         #region functions
+        /*sets this matrix to a rotation matrix for the x axis with specified radians*/
         public void SetRotateX(float rads)
         {
             float cos = (float)Math.Cos(rads);
@@ -191,6 +193,7 @@ namespace MathClasses
             this.row2 = new Vector4(0.0F, -sin, cos, 0.0F);
             this.row3 = new Vector4(0.0F, 0.0F, 0.0F, 1.0F);
         }
+        /*sets this matrix to a rotation matrix for the y axis with specified radians*/
         public void SetRotateY(float rads)
         {
             float cos = (float)Math.Cos(rads);
@@ -200,7 +203,7 @@ namespace MathClasses
             this.row2 = new Vector4(sin, 0.0F, cos, 0.0F);
             this.row3 = new Vector4(0.0F, 0.0F, -0.0F, 1.0F);
         }
-
+        /*sets this matrix to a rotation matrix for the z axis with specified radians*/
         public void SetRotateZ(float rads)
         {
             float cos = (float)Math.Cos(rads);

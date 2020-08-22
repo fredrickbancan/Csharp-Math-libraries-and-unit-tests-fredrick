@@ -9,6 +9,7 @@ namespace MathClasses
         public Vector3 row2;
         #region constructors
 
+        /*Constructor for initializing this matrix with an identity value*/
         public Matrix3(float identity)
         {
             row0 = new Vector3(identity, 0.0F, 0.0F);
@@ -110,6 +111,7 @@ namespace MathClasses
         #endregion
 
         #region functions
+        /*sets this matrix to a rotation matrix for the x axis with specified radians*/
         public void SetRotateX(float rads)
         {
             float cos = (float)Math.Cos(rads);
@@ -119,6 +121,7 @@ namespace MathClasses
             this.row2 = new Vector3(0.0F, -sin, cos);
         }
 
+        /*sets this matrix to a rotation matrix for the y axis with specified radians*/
         public void SetRotateY(float rads)
         {
             float cos = (float)Math.Cos(rads);
@@ -128,6 +131,7 @@ namespace MathClasses
             this.row2 = new Vector3(sin, 0.0F, cos);
         }
 
+        /*sets this matrix to a rotation matrix for the z axis with specified radians*/
         public void SetRotateZ(float rads)
         {
             float cos = (float)Math.Cos(rads);

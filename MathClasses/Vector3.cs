@@ -87,16 +87,20 @@ namespace MathClasses
         }
 
         //funcs
+
+        /*returns the dot product of instance with vec provided*/
         public float Dot(Vector3 vec)
         {
             return this.x * vec.x + this.y * vec.y + this.z * vec.z;
         }
 
+        /*returns the magnitude of this vector*/
         public float Magnitude()
         {
             return (float)Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
         }
 
+        /*scales this vector down to a length of 1 while maintaining direction*/
         public void Normalize()
         {
             float length = this.Magnitude();
@@ -112,14 +116,17 @@ namespace MathClasses
             }
         }
         
+        /*returns the magnitude of the procided vector*/
         public static float magnitude(Vector3 vec)
         {
             return (float)Math.Sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
         }
+        /*returns a new vector purpendicular to instance and provided vector*/
         public Vector3 Cross(Vector3 vec)
         {
             return new Vector3(this.y * vec.z - this.z * vec.y, this.z * vec.x - this.x * vec.z, this.x * vec.y - this.y * vec.x);
         }
+        /*returns the provided vector normalized*/
         public static Vector3 normalize(Vector3 vec)
         {
             float length = magnitude(vec);
@@ -136,10 +143,12 @@ namespace MathClasses
             return vec;
         }
 
+        /*returns a new vector purpendicular to the two provided vectors*/
         public static Vector3 cross(Vector3 vecA, Vector3 vecB)
         {
             return new Vector3(vecA.y * vecB.z - vecA.z * vecB.y, vecA.z * vecB.x - vecA.x * vecB.z, vecA.x * vecB.y - vecA.y * vecB.x);
         }
+        /*returns a dot product of the two provided vectors*/
         public static float dot(Vector3 vecA, Vector3 vecB)
         {
             return vecA.x * vecB.x + vecA.y * vecB.y + vecA.z * vecB.z;

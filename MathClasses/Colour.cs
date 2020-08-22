@@ -2,6 +2,7 @@
 
 namespace MathClasses
 {
+    /*Class for storing a color as a 4 byte unsigned integer*/
     public struct Colour
     {
         #region pre-set colours;
@@ -21,18 +22,16 @@ namespace MathClasses
         public static Colour steelBlue = new Colour(70, 130, 180);
         #endregion
 
-        public UInt32 colour;
+        public UInt32 colour;//color values stored in this 4 byte unsigned integer
 
         //constructors
-        /*public Colour()
-        {
-            colour = 0;
-        }*/
+        /*Constructor taking in a whole unsigned 4 byte integer, or hexadecimal value*/
         public Colour(UInt32 color)
         {
             this.colour = color;
         }
 
+        /*Constructor for specifying each color value from 0 to 255, alpha defaults to 255.*/
         public Colour(byte r, byte g, byte b, byte a = 255)
         {
             colour = (UInt32)(r << 24 | g << 16 | b << 8 | a);
@@ -80,6 +79,7 @@ namespace MathClasses
             colour |= (UInt32)alpha;
         }
 
+        /*Returns colour values as a normalized vector 4 with each color converted to a range from 0F to 1F.*/
         public Vector4 GetNormalizedVector4()
         {
             return new Vector4(MathUtil.normalize(0,255,this.GetRed()), MathUtil.normalize(0, 255, this.GetGreen()), MathUtil.normalize(0, 255, this.GetBlue()), MathUtil.normalize(0, 255, this.GetAlpha()));
