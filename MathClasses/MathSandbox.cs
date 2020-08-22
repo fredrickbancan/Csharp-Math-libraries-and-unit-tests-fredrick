@@ -12,6 +12,11 @@ namespace MathClasses
             do
             {
                 Console.Clear();
+
+                Colour bruh = new Colour();
+                bruh.SetRed(94);
+                Console.WriteLine(bruh.GetRed());
+                Console.WriteLine(bruh.colour);
                 byte typeChoice = 0;
                 do
                 {

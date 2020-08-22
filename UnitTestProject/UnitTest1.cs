@@ -561,5 +561,14 @@ namespace UnitTestProject
 
             Assert.IsTrue(compare(vec, new Vector4(1F, 1F, 1F, 1F)));
         }
+        [TestMethod]/*ADDED BY FREDRICK FOR SUBMISSION*/
+        public void TestColourDoingExercies()
+        {
+            Colour c = new Colour();
+            c.SetRed(94);
+            Assert.AreEqual<UInt32>(c.colour, 0x5e000000);
+            c.colour = (UInt32)((byte)(c.colour >> 24)) << 16;
+            Assert.AreEqual<UInt32>(c.colour, 0x005e0000);
+        }
     }
 }
