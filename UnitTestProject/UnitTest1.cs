@@ -552,14 +552,14 @@ namespace UnitTestProject
             Assert.AreEqual<UInt32>(c.colour, 0x00000078);
         }
 
-        [TestMethod]/*ADDED BY FREDRICK FOR SUBMISSION, I HAVE NO IDEA WHY THIS DOES NOT WORK :(*/
-        public void TestColourHalfBrightness()
+        [TestMethod]/*ADDED BY FREDRICK FOR SUBMISSION*/
+        public void TestColourGetNormalizedVec4()
         {
             // homogeneous point translation
             Colour c = new Colour(0xFFFFFFFF);
-            c.HalfBrightness();
+            Vector4 vec = c.GetNormalizedVector4();
 
-            Assert.AreEqual<UInt32>(c.colour, 0x7F7F7FFF);
+            Assert.IsTrue(compare(vec, new Vector4(1F, 1F, 1F, 1F)));
         }
     }
 }

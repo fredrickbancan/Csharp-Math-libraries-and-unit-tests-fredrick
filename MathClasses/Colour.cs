@@ -80,15 +80,9 @@ namespace MathClasses
             colour |= (UInt32)alpha;
         }
 
-        public void HalfBrightness()
+        public Vector4 GetNormalizedVector4()
         {
-            byte red = this.GetRed();
-            byte green = this.GetGreen();
-            byte blue = this.GetBlue();
-
-            this.SetRed((byte)(red / 2));
-            this.SetGreen((byte)(green / 2));
-            this.SetBlue((byte)(blue / 2));
+            return new Vector4(MathUtil.normalize(0,255,this.GetRed()), MathUtil.normalize(0, 255, this.GetGreen()), MathUtil.normalize(0, 255, this.GetBlue()), MathUtil.normalize(0, 255, this.GetAlpha()));
         }
     }
 }
