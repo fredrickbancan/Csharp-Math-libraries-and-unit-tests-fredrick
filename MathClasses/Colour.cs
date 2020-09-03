@@ -84,5 +84,14 @@ namespace MathClasses
         {
             return new Vector4(MathUtil.normalize(0,255,this.GetRed()), MathUtil.normalize(0, 255, this.GetGreen()), MathUtil.normalize(0, 255, this.GetBlue()), MathUtil.normalize(0, 255, this.GetAlpha()));
         }
+
+        /*Written for the test as part of the exercise. Shifts red bits to the green bits.
+          Would normally set blue bits to zero, but i will make it save them.*/
+        public void ShiftRedToGreen()
+        {
+            byte savedBlue = GetBlue();
+            colour = (UInt32)((byte)(colour >> 24)) << 16;
+            SetBlue(savedBlue);
+        }
     }
 }
